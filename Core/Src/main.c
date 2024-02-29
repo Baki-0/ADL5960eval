@@ -73,7 +73,8 @@ void spi_write_32(uint16_t address, uint8_t writedata){
   uint32_t upperbit = address & 0x0000FFFF;
   uint16_t lowerbit = writedata;
 	//uint32_t inv_writedata = ((lowerbit << 16) | upperbit) << 8;		//shift 16bit left and calc OR lower 16 bit
-  uint32_t inv_writedata = (upperbit << 16) | (lowerbit<<8);
+    uint32_t inv_writedata = (upperbit << 16) | (lowerbit<<8);
+    inv_writedata = inv_writedata << 8;
 	HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, GPIO_PIN_RESET);
 	HAL_Delay(1);
 	HAL_SPI_Transmit_DMA(&hspi1, &inv_writedata, 2);
@@ -86,11 +87,11 @@ void adl5960_init(void){
   spi_write_32(0x0000, 0x00);
   spi_write_32(0x0001, 0x00);
   spi_write_32(0x0002, 0x00);
-  spi_write_32(0x0020, 0x19);
+  spi_write_32(0x0020, 0x11);
   spi_write_32(0x0021, 0x00);
   spi_write_32(0x0022, 0x00);
-  spi_write_32(0x0023, 0x00);
-  spi_write_32(0x0024, 0x00);
+  spi_write_32(0x0023, 0x35);
+  spi_write_32(0x0024, 0x35);
   spi_write_32(0x0025, 0x00);
   spi_write_32(0x0026, 0x0D);
 }

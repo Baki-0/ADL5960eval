@@ -60,8 +60,8 @@ all: main-build
 main-build: ADL5960eval.elf secondary-outputs
 
 # Tool invocations
-ADL5960eval.elf ADL5960eval.map: $(OBJS) $(USER_OBJS) C:\code\CubeIDE\ADL5960eval\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "ADL5960eval.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\code\CubeIDE\ADL5960eval\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADL5960eval.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ADL5960eval.elf ADL5960eval.map: $(OBJS) $(USER_OBJS) C:\Users\YoTsubaki\STM32CubeIDE\workspace_1.11.2\ADL5960eval\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "ADL5960eval.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\YoTsubaki\STM32CubeIDE\workspace_1.11.2\ADL5960eval\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADL5960eval.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
